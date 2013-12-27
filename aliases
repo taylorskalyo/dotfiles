@@ -1,0 +1,15 @@
+# Manjaro aliases
+alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias ll='ls -l --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias la='ls -la --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias grep='grep --color=tty -d skip'
+alias cp="cp -i"			# confirm before overwriting something
+alias df='df -h'			# human-readable sizes
+alias free='free -m'		# show sizes in MB
+alias np='nano PKGBUILD'
+
+# My aliases
+alias pacsize='pacman -Qi | egrep "Name|Installed Size" | sed -e '\''N;s/\n/ /'\'' | awk '\''{ print $7, $3}'\'' | sort -n' # list all installed packages and their sizes, sort by smallest first
+#alias uterm='xrdb -merge ~/.Xresources'
+alias uterm='xrdb ~/.Xresources'
+alias batt='acpi -b'
