@@ -12,7 +12,7 @@ Xft.lcdfilter: lcddefault
 ! URxvt*buffered: boolean
 
 ! Create the window with the specified X window geometry [default
-URxvt*geometry: 97x26
+URxvt*geometry: 84x24
 
 ! Use the specified colour for the colour value n, where 0-7
 ! URxvt*colorn: colour
@@ -224,7 +224,6 @@ URxvt*perl-ext-common: default,matcher,vtwheel
 ! Clickable URLS
 URxvt*url-launcher: /usr/bin/chromium
 URxvt*matcher.button: 1
-URxvt*colorUL: #4682B4
 
 ! Tabs
 URxvt.tabbed.tabbar-fg: 8
@@ -286,44 +285,54 @@ URxvt*boldFont: xft:Terminus:pixelsize=14:antialias=false,xft:Inconsolata\ for\ 
 
 ! Hybrid Terminal Colours
 ! vim: ft=xdefaults
+
+#define blk   #282a2e
+#define blk_b #373b41
+#define red   #a54242
+#define red_b #cc6666
+#define grn   #8c9440
+#define grn_b #b5bd68
+#define yel   #de935f
+#define yel_b #f0c674
+#define blu   #5f819d
+#define blu_b #81a2be
+#define mag   #85678f
+#define mag_b #b294bb
+#define cya   #5e8d87
+#define cya_b #8abeb7
+#define wht   #707880
+#define wht_b #c5c8c6
  
-! Tomorrow-Night Palette
-#define t_background #222222
-#define t_current_line #202020
-#define t_selection #3B3B3B
-#define t_foreground #C5C8C6
-#define t_comment #707880
-#define t_red #CC5151
-#define t_orange #CC965F
-#define t_yellow #CCC166
-#define t_green #B7CC66
-#define t_aqua #82CCBA
-#define t_blue #70A8CC
-#define t_purple #CC8FB8
- 
-URxvt*background: t_background
-URxvt*foreground: t_foreground
+URxvt*background: #222222
+URxvt*foreground: #dddddd
 ! black
-URxvt*color0: t_current_line
-URxvt*color8: t_selection
+URxvt*color0: blk
+URxvt*color8: blk_b
 ! red
-URxvt*color1: #A54242
-URxvt*color9: t_red
+URxvt*color1: red
+URxvt*color9: red_b
 ! green
-URxvt*color2: #8C9440
-URxvt*color10: t_green
+URxvt*color2:  grn
+URxvt*color10: grn_b
 ! yellow
-URxvt*color3: t_orange
-URxvt*color11: t_yellow
+URxvt*color3:  yel
+URxvt*color11: yel_b
 ! blue
-URxvt*color4: #5F819D
-URxvt*color12: t_blue
+URxvt*color4:  blu
+URxvt*color12: blu_b
 ! magenta
-URxvt*color5: #85678F
-URxvt*color13: t_purple
+URxvt*color5:  mag
+URxvt*color13: mag_b
 ! cyan
-URxvt*color6: #5E8D87
-URxvt*color14: t_aqua
+URxvt*color6:  cya
+URxvt*color14: cya_b
 ! white
-URxvt*color7: t_comment
-URxvt*color15: t_foreground
+URxvt*color7:  wht
+URxvt*color15: wht_b
+
+! Italicized
+URxvt*colorIT:      mag_b
+! Bold
+URxvt*colorBD:      red_b
+! Underlined
+URxvt*colorUL:		blu_b
