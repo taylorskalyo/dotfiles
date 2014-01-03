@@ -219,7 +219,7 @@ URxvt*scrollBar: false
 ! URxvt*keysym.sym: string
 
 ! URxvt*perl-ext-common: string
-URxvt*perl-ext-common: default,matcher,tabbed,vtwheel
+URxvt*perl-ext-common: default,matcher,vtwheel
 
 ! Clickable URLS
 URxvt*url-launcher: /usr/bin/chromium
