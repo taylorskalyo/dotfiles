@@ -1,0 +1,661 @@
+{
+	"folder_history":
+	[
+		"/home/taylor/.config/obmenu-generator"
+	],
+	"last_version": 3059,
+	"last_window_id": 2,
+	"log_indexing": false,
+	"settings":
+	{
+		"new_window_height": 0.0,
+		"new_window_settings":
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 362.0,
+				"selected_items":
+				[
+					[
+						"Package Control",
+						"Package Control: Install Package"
+					],
+					[
+						"Package",
+						"Package Control: Install Package"
+					],
+					[
+						"",
+						"Preferences: Browse Packages"
+					]
+				],
+				"width": 435.0
+			},
+			"console":
+			{
+				"height": 120.0,
+				"history":
+				[
+					"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/taylor/10",
+				"/home/taylor/bin/urxvtq",
+				"/home/taylor/dotfiles/add.sh",
+				"/home/taylor/dotfiles/.install.sh",
+				"/home/taylor/dotfiles/.simple-install.sh",
+				"/home/taylor/stf/job-research",
+				"/home/taylor/dotfiles/.install3.sh",
+				"/home/taylor/dotfiles/.install2.sh",
+				"/home/taylor/.test/test",
+				"/home/taylor/.config/powerline/colorschemes/vim/mine.json",
+				"/home/taylor/.config/compton.conf",
+				"/home/taylor/.config/powerline/config.json",
+				"/home/taylor/.config/powerline/colors.json",
+				"/home/taylor/.bashrc",
+				"/home/taylor/.zshrc",
+				"/home/taylor/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/taylor/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+				"/home/taylor/.Xresources",
+				"/home/taylor/.vim/.netrwhist"
+			],
+			"find":
+			{
+				"height": 22.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"dir",
+					"$subpath$file",
+					"$subpath",
+					"subpath",
+					"/$subpath",
+					"darkestgreen",
+					"brightgreen",
+					"newline",
+					"white",
+					"symbol",
+					"width",
+					"scroll"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": false,
+				"replace_history":
+				[
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"incremental_find":
+			{
+				"height": 22.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"replace":
+			{
+				"height": 40.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": true,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			}
+		},
+		"new_window_width": 0.0
+	},
+	"windows":
+	[
+		{
+			"auto_complete":
+			{
+				"selected_items":
+				[
+				]
+			},
+			"buffers":
+			[
+				{
+					"file": "/home/taylor/.weechat/weechat.conf",
+					"settings":
+					{
+						"buffer_size": 17491,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/taylor/.Xresources",
+					"settings":
+					{
+						"buffer_size": 9602,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/taylor/.tmux.conf",
+					"settings":
+					{
+						"buffer_size": 778,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/taylor/.vimrc",
+					"settings":
+					{
+						"buffer_size": 1814,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/taylor/bin/colors",
+					"settings":
+					{
+						"buffer_size": 1332,
+						"line_ending": "Unix"
+					}
+				},
+				{
+					"file": "/home/taylor/.zshrc",
+					"settings":
+					{
+						"buffer_size": 575,
+						"line_ending": "Unix"
+					}
+				}
+			],
+			"build_system": "",
+			"command_palette":
+			{
+				"height": 362.0,
+				"selected_items":
+				[
+					[
+						"Package Control",
+						"Package Control: Install Package"
+					],
+					[
+						"Package",
+						"Package Control: Install Package"
+					],
+					[
+						"",
+						"Preferences: Browse Packages"
+					]
+				],
+				"width": 435.0
+			},
+			"console":
+			{
+				"height": 120.0,
+				"history":
+				[
+					"import urllib.request,os; pf = 'Package Control.sublime-package'; ipp = sublime.installed_packages_path(); urllib.request.install_opener( urllib.request.build_opener( urllib.request.ProxyHandler()) ); open(os.path.join(ipp, pf), 'wb').write(urllib.request.urlopen( 'http://sublime.wbond.net/' + pf.replace(' ','%20')).read())"
+				]
+			},
+			"distraction_free":
+			{
+				"menu_visible": true,
+				"show_minimap": false,
+				"show_open_files": false,
+				"show_tabs": false,
+				"side_bar_visible": false,
+				"status_bar_visible": false
+			},
+			"file_history":
+			[
+				"/home/taylor/.mozilla/firefox/9shb6xj3.default/chrome/userChrome.css",
+				"/home/taylor/downloads/userChrome.css",
+				"/home/taylor/.mozilla/chrome/userChrome.css",
+				"/home/taylor/.config/sublime-text-3/Packages/User/Preferences.sublime-settings",
+				"/home/taylor/.config/openbox/menu.xml",
+				"/home/taylor/bin/colors.sh",
+				"/home/taylor/bin/colors2.sh",
+				"/home/taylor/.tmux.conf",
+				"/home/taylor/.weechat/weechat.conf",
+				"/home/taylor/dropbox/cookie.txt",
+				"/home/taylor/dropbox/.dropbox",
+				"/run/mount/utab",
+				"/home/taylor/templates/hello.c",
+				"/home/taylor/templates/hello.cpp",
+				"/home/taylor/templates/hello.java",
+				"/home/taylor/templates/hello.py",
+				"/home/taylor/templates/hello.sh",
+				"/home/taylor/templates/hello-world.c",
+				"/home/taylor/.hidden/Dropbox/Classes/CS3210/project3/Makefile",
+				"/home/taylor/templates/Makefile",
+				"/home/taylor/.hidden/Dropbox/Classes/CS3210/project1/3210.c",
+				"/home/taylor/.config/user-dirs.dirs",
+				"/etc/xdg/user-dirs.conf",
+				"/home/taylor/templates/README.md",
+				"/home/taylor/dotfiles/.install.sh",
+				"/home/taylor/.Xresources",
+				"/home/taylor/.zshrc",
+				"/home/taylor/.aliases",
+				"/home/taylor/.bashrc",
+				"/home/taylor/.functions",
+				"/home/taylor/.xinitrc",
+				"/home/taylor/.config/openbox/autostart",
+				"/home/taylor/.config/obmenu-generator/schema.pl",
+				"/home/taylor/.config/executables/printing.sh",
+				"/home/taylor/.config/executables/aur.sh",
+				"/home/taylor/.conkyrc",
+				"/home/taylor/10",
+				"/home/taylor/bin/urxvtq",
+				"/home/taylor/dotfiles/add.sh",
+				"/home/taylor/dotfiles/.simple-install.sh",
+				"/home/taylor/stf/job-research",
+				"/home/taylor/dotfiles/.install3.sh",
+				"/home/taylor/dotfiles/.install2.sh",
+				"/home/taylor/.test/test",
+				"/home/taylor/.config/powerline/colorschemes/vim/mine.json",
+				"/home/taylor/.config/compton.conf",
+				"/home/taylor/.config/powerline/config.json",
+				"/home/taylor/.config/powerline/colors.json",
+				"/home/taylor/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
+				"/home/taylor/.vim/.netrwhist"
+			],
+			"find":
+			{
+				"height": 36.0
+			},
+			"find_in_files":
+			{
+				"height": 0.0,
+				"where_history":
+				[
+				]
+			},
+			"find_state":
+			{
+				"case_sensitive": false,
+				"find_history":
+				[
+					"height",
+					"███████",
+					"gui=bold ",
+					"guibg=.*? ",
+					"guifg=.*? ",
+					"ctermbg=.*",
+					"ctermbg=.* ",
+					"ctermbg=0",
+					"#222222",
+					"left",
+					"buffers",
+					"xinitrc.d",
+					"lxterminal",
+					"geany",
+					"dir",
+					"$subpath$file",
+					"$subpath",
+					"subpath",
+					"/$subpath",
+					"darkestgreen",
+					"brightgreen",
+					"newline",
+					"white",
+					"symbol",
+					"width",
+					"scroll"
+				],
+				"highlight": true,
+				"in_selection": false,
+				"preserve_case": false,
+				"regex": true,
+				"replace_history":
+				[
+					"████████",
+					"",
+					"urxvtc",
+					"subl3"
+				],
+				"reverse": false,
+				"show_context": true,
+				"use_buffer2": true,
+				"whole_word": false,
+				"wrap": true
+			},
+			"folders":
+			[
+				{
+					"follow_symlinks": true,
+					"path": "/home/taylor/.config/obmenu-generator"
+				}
+			],
+			"groups":
+			[
+				{
+					"selected": 2,
+					"sheets":
+					[
+						{
+							"buffer": 0,
+							"file": "/home/taylor/.weechat/weechat.conf",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 17491,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 2340.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 1,
+							"type": "text"
+						},
+						{
+							"buffer": 1,
+							"file": "/home/taylor/.Xresources",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 9602,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										0,
+										0
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 638.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 2,
+							"type": "text"
+						},
+						{
+							"buffer": 2,
+							"file": "/home/taylor/.tmux.conf",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 778,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										657,
+										657
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 0,
+							"type": "text"
+						},
+						{
+							"buffer": 3,
+							"file": "/home/taylor/.vimrc",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1814,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										1159,
+										1159
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage",
+									"tab_size": 4,
+									"translate_tabs_to_spaces": false
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 4,
+							"type": "text"
+						},
+						{
+							"buffer": 4,
+							"file": "/home/taylor/bin/colors",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 1332,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										525,
+										525
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/ShellScript/Shell-Unix-Generic.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 3,
+							"type": "text"
+						},
+						{
+							"buffer": 5,
+							"file": "/home/taylor/.zshrc",
+							"semi_transient": false,
+							"settings":
+							{
+								"buffer_size": 575,
+								"regions":
+								{
+								},
+								"selection":
+								[
+									[
+										371,
+										371
+									]
+								],
+								"settings":
+								{
+									"syntax": "Packages/Text/Plain text.tmLanguage"
+								},
+								"translation.x": 0.0,
+								"translation.y": 0.0,
+								"zoom_level": 1.0
+							},
+							"stack_index": 5,
+							"type": "text"
+						}
+					]
+				}
+			],
+			"incremental_find":
+			{
+				"height": 22.0
+			},
+			"input":
+			{
+				"height": 0.0
+			},
+			"layout":
+			{
+				"cells":
+				[
+					[
+						0,
+						0,
+						1,
+						1
+					]
+				],
+				"cols":
+				[
+					0.0,
+					1.0
+				],
+				"rows":
+				[
+					0.0,
+					1.0
+				]
+			},
+			"menu_visible": true,
+			"output.find_results":
+			{
+				"height": 0.0
+			},
+			"position": "0,1,0,0,0,0,0,0,0,1366,768",
+			"project": "",
+			"replace":
+			{
+				"height": 64.0
+			},
+			"save_all_on_build": true,
+			"select_file":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_project":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"select_symbol":
+			{
+				"height": 0.0,
+				"selected_items":
+				[
+				],
+				"width": 0.0
+			},
+			"settings":
+			{
+			},
+			"show_minimap": true,
+			"show_open_files": false,
+			"show_tabs": true,
+			"side_bar_visible": false,
+			"side_bar_width": 150.0,
+			"status_bar_visible": true,
+			"template_settings":
+			{
+			},
+			"window_id": 2,
+			"workspace_name": ""
+		}
+	],
+	"workspaces":
+	{
+		"recent_workspaces":
+		[
+		]
+	}
+}

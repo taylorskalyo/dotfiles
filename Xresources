@@ -12,7 +12,7 @@ Xft.lcdfilter: lcddefault
 ! URxvt*buffered: boolean
 
 ! Create the window with the specified X window geometry [default
-URxvt*geometry: 84x24
+URxvt*geometry: 113x18
 
 ! Use the specified colour for the colour value n, where 0-7
 ! URxvt*colorn: colour
@@ -265,13 +265,13 @@ URxvt.tabbed.tab-bg:    0
 ! URxvt*iso14755_52: boolean
 
 ! Select the fonts to be used. This is a comma separated list of font
-!URxvt*font: xft:Terminus:pixelsize=14:antialias=false
-URxvt*font: xft:Terminus:pixelsize=14:antialias=false,xft:Inconsolata\ for\ Powerline:pixelsize=14:antialias=false
+URxvt*font: xft:Terminus:pixelsize=12:antialias=false
+!URxvt*font: xft:Terminus:pixelsize=14:antialias=false,xft:Inconsolata\ for\ Powerline:pixelsize=14:antialias=false
 
 ! URxvt*letterSpace: 0
 
 ! URxvt*boldFont: fontlist
-URxvt*boldFont: xft:Terminus:pixelsize=14:antialias=false,xft:Inconsolata\ for\ Powerline:pixelsize=14:antialias=false
+URxvt*boldFont: xft:Terminus:pixelsize=12:antialias=false
 
 ! URxvt*italicFont: fontlist
 

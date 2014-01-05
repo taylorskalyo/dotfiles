@@ -1,0 +1,16 @@
+{
+	"color_scheme": "Packages/Tomorrow Color Schemes/Tomorrow-Night.tmTheme",
+	"font_face": "Terminus",
+	"font_size": 9,
+	"word_wrap": "true",
+	"ignored_packages":
+	[
+		"Vintage"
+	],
+	"rulers":
+	[
+		80
+	],
+	"scroll_speed": 0.0,
+	"theme": "Soda Dark 3.sublime-theme"
+}
