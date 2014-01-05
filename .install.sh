@@ -54,6 +54,7 @@ while [ $height -gt 0 ]; do
 
 		# move it to ~/dotfiles_old/
 		echo "Moving $file from ~/ to $olddotdir/"
+		mkdir -p $olddotdir
 		mv ~/.$file $olddotdir/.$file
 	fi
 
