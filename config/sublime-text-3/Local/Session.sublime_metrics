@@ -1,3 +1,11 @@
 {
+	"licensed": false,
+	"packages":
+	[
+		"Package Control",
+		"Theme - Soda",
+		"Tomorrow Color Schemes"
+	],
+	"startup_sec": 0.362852,
 	"time": 1388896279
 }
