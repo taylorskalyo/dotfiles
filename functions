@@ -34,6 +34,13 @@ cman() {
 		man "$@"
 }
 
+# Change laptop brightness
 bri() {
 	echo "$1" | sudo tee /sys/class/backlight/acpi_video0/brightness
 }
+
+# Connect to gatech shuttle server via ssh
+sshuttle() {
+	ssh triggs3@shuttle$1.cc.gatech.edu
+}
+

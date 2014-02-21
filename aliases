@@ -14,3 +14,5 @@ alias pacsize='pacman -Qi | egrep "Name|Installed Size" | sed -e '\''N;s/\n/ /'\
 alias uterm='xrdb ~/.Xresources'
 alias batt='acpi -b'
 alias tabbed='urxvtc --perl-ext-common tabbed && exit'
+alias server='python -m http.server'
+

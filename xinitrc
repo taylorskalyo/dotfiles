@@ -44,7 +44,8 @@ sed 's/_user_/'$(whoami)'/' ~/.config/obmenu-generator/config.pl -i
 #exec $1
 
 ## Set a single desktop environment
-exec openbox-session
+#exec openbox-session
+exec $1
 #exec xfce4-session
 #exec gnome-session
 #exec startkde
