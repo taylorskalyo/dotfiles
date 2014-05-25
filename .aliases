@@ -2,10 +2,15 @@
 # General
 # ------------------------------------------------------------------------------
 
+# color output
 alias ls='gls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
 alias grep='grep --color=tty -d skip'
-alias cp="cp -i"			# confirm before overwriting something
-alias df='df -h'			# human-readable sizes
+
+# confirm before overwriting something
+alias cp="cp -i"
+
+# show git graph
+alias git-graph='git log --graph --oneline --all'
 
 
 # -----------------
@@ -17,3 +22,4 @@ alias cgserv='(sleep 10 && open http://localhost:3000)& ~/code/codeguard/script/
 
 # start tmux and run codeguard teamocil configuration
 alias cgtmux='tmux new-session "teamocil codeguard"'
+
