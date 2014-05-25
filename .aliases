@@ -1,0 +1,19 @@
+# -----------------
+# General
+# ------------------------------------------------------------------------------
+
+alias ls='gls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+alias grep='grep --color=tty -d skip'
+alias cp="cp -i"			# confirm before overwriting something
+alias df='df -h'			# human-readable sizes
+
+
+# -----------------
+# CodeGuard specific
+# ------------------------------------------------------------------------------
+
+# start server and open in browser
+alias cgserv='(sleep 10 && open http://localhost:3000)& ~/code/codeguard/script/server'
+
+# start tmux and run codeguard teamocil configuration
+alias cgtmux='tmux new-session "teamocil codeguard"'
