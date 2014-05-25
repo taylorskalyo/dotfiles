@@ -1,0 +1,12 @@
+# -----------------
+# Functions
+# ------------------------------------------------------------------------------ 
+# exit codeguard teamocil session
+cgtmux-exit() {
+	tmux send-keys -t vim ":q" C-m
+	tmux send-keys -t console "exit" C-m
+	tmux send-keys -t log C-c
+	tmux send-keys -t server C-c
+	tmux kill-session -t codeguard
+}
+
