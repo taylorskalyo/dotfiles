@@ -72,15 +72,11 @@ preexec () {
 # External Resources
 # ------------------------------------------------------------------------------ 
 RESOURCES=(~/.aliases ~/.functions ~/.cgrc)
-#source ~/.aliases
-#source ~/.functions
 for FILE in $RESOURCES; do
 	if [ -f $FILE ]; then
 		source $FILE
 	fi
 done
-
-alias man='cman'
 
 # -----------------
 # Dirstack
