@@ -9,10 +9,6 @@ alias grep='grep --color=tty -d skip'
 # confirm before overwriting something
 alias cp="cp -i"
 
-# show git graph
-alias git-graph='git log --graph --oneline --all'
-
-
 # -----------------
 # CodeGuard specific
 # ------------------------------------------------------------------------------
