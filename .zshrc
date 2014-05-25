@@ -72,7 +72,8 @@ preexec () {
 # External Resources
 # ------------------------------------------------------------------------------ 
 source ~/.aliases
-#source ~/.functions
+source ~/.functions
+alias man='cman'
 
 # -----------------
 # Dirstack
