@@ -1,0 +1,51 @@
+session:
+    name: "codeguard"
+    windows:
+      - name: shell
+        root: ~/code/codeguard
+        filters:
+          before:
+            - "rvm use 1.8.7@cg"
+        splits:
+          - cmd: "clear"
+            width: 100
+      - name: vim
+        root: ~/code/codeguard
+        filters:
+          before:
+            - "rvm use 1.8.7@cg"
+        splits:
+          - cmd: "clear"
+            width: 100
+      - name: console
+        root: ~/code/codeguard
+        filters:
+          before:
+            - "rvm use 1.8.7@cg"
+        splits:
+          - cmd: "clear;script/console"
+            width: 100
+      - name: log
+        root: ~/code/codeguard
+        filters:
+          before:
+            - "rvm use 1.8.7@cg"
+        splits:
+          - cmd: "clear;tail -f log/development.log"
+            width: 100
+      - name: server
+        root: ~/code/codeguard
+        filters:
+          before:
+            - "rvm use 1.8.7@cg"
+        splits:
+          - cmd: "clear;script/server"
+            width: 100
+#      - name: guard
+#        root: ~/code/codeguard
+#        filters:
+#          before:
+#            - "rvm use 1.8.7@cg"
+#        splits:
+#          - cmd: "guard"
+#            width: 100
