@@ -1,7 +1,7 @@
 # -----------------
 # Functions
 # ------------------------------------------------------------------------------ 
-# exit codeguard teamocil session
+# Exit a codeguard teamocil session cleanly
 cgtmux-exit() {
 	tmux send-keys -t vim ":q" C-m
 	tmux send-keys -t console "exit" C-m

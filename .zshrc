@@ -15,36 +15,32 @@ HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_SPACE
 
+# Search history
+bindkey "^R" history-incremental-search-backward
+
 # -----------------
 # Vim-Like Bindings
 # ------------------------------------------------------------------------------ 
 bindkey -v
 
 # -----------------
-# History Search
+# Tab Completion
 # ------------------------------------------------------------------------------ 
-bindkey "^R" history-incremental-search-backward
-
-# -----------------
-# Modules
-# ------------------------------------------------------------------------------ 
-zstyle :compinstall filename '/home/taylor/.zshrc'
+#zstyle :compinstall filename '/home/taylor/.zshrc'
 autoload -Uz compinit
 compinit
 
-autoload -U colors
-colors
-
-autoload -U promptinit
-promptinit
-
-# -----------------
-# Teamocil Completion
-# ------------------------------------------------------------------------------ 
+# Teamocil completion
 compctl -g '~/.teamocil/*(:t:r)' teamocil
 
 # -----------------
-# VIMODE in Prompt
+# Colors
+# ------------------------------------------------------------------------------ 
+autoload -U colors
+colors
+
+# -----------------
+# Right Prompt
 # ------------------------------------------------------------------------------ 
 VIM_NORMAL="%{$fg_bold[yellow]%}CMD-MODE%{$reset_color%}"
 VIM_INSERT=""
@@ -55,18 +51,25 @@ function zle-keymap-select {
 }
 zle -N zle-keymap-select
 
-# -----------------
-# Prompt
-# ------------------------------------------------------------------------------
-#PROMPT=$'%{\e[0;92m%}%n %{\e[0;94m%}%~ %{\e[0;92m%}%# %{\e[m%}'
-PROMPT="%{$fg_bold[green]%}%n %{$fg_bold[blue]%}%~ %{$fg_bold[green]%}%# %{$reset_color%}"
-
 # Print the time when a command is executed
 preexec () {
 	DATE=`date +"%H:%M:%S"`
 	C=$(($COLUMNS-9))
 	echo "\033[1A\033[${C}C $fg_bold[red]${DATE}$reset_color"
 }
+
+# -----------------
+# Left Prompt
+# ------------------------------------------------------------------------------
+autoload -U promptinit
+promptinit
+
+#PROMPT=$'%{\e[0;92m%}%n %{\e[0;94m%}%~ %{\e[0;92m%}%# %{\e[m%}'
+PROMPT="\
+%{$fg_bold[green]%}%n \
+%{$fg_bold[blue]%}%~ \
+%{$fg_bold[green]%}%# \
+%{$reset_color%}"
 
 # -----------------
 # External Resources
