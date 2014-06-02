@@ -98,7 +98,7 @@ function MyTabLine()
   return s
 endfunction
 
-
+" Colors
 set t_Co=256
 set background=dark
 colorscheme tomorrow-night
@@ -164,6 +164,10 @@ set statusline+=%6*%{strlen(&filetype)>0?&filetype.'\ ':''}
 set statusline+=%8*\ %p%%\ 
 set statusline+=%2*%l:%c\ 
 
+" Tabline
 hi TabLine ctermfg=0 ctermbg=7
 hi TabLineFill ctermfg=0 ctermbg=7
+
+" Ruler
+set cc=80
 
