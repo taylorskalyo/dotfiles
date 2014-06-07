@@ -8,6 +8,11 @@ export PATH="$PATH:$GOPATH/bin"				# go bin
 export PATH="$PATH:$HOME/bin"				# home bin
 
 # -----------------
+# Vim-Like Bindings
+# ------------------------------------------------------------------------------
+bindkey -v
+
+# -----------------
 # History
 # ------------------------------------------------------------------------------
 HISTFILE=~/.histfile
@@ -17,11 +22,6 @@ setopt HIST_IGNORE_SPACE
 
 # Search history
 bindkey "^R" history-incremental-search-backward
-
-# -----------------
-# Vim-Like Bindings
-# ------------------------------------------------------------------------------
-bindkey -v
 
 # -----------------
 # Tab Completion
