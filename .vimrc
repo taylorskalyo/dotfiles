@@ -1,9 +1,8 @@
 " Show line numbers
 set nu
 
-" Indent settings
-set ai     "auto indent
-set si     "smart indent
+" Unicode support
+set encoding=utf-8
 
 " Enable mouse scrollwheel
 set mouse=a
@@ -14,12 +13,26 @@ set wrap
 " Highlight searches
 set hlsearch
 
-" Tab is equal to 4 spaces
-set sw=4     "shift width
-set ts=4     "tab stop
+" Indent settings
+set autoindent
+filetype plugin indent on
+
+" Tab is equal to 2 spaces
+set shiftwidth=2
+set tabstop=2
+set expandtab
+
+" Show trailing spaces and tabs
+set list listchars=tab:│\ ,trail:·
 
 " Syntax highlighting
-syntax enable	
+syntax enable
+
+" Move temporary files to tmp directory
+set bdir-=.
+set bdir+=/tmp
+set dir-=.
+set dir+=/tmp
 
 " Automatically read when file changes
 set autoread
@@ -27,8 +40,17 @@ set autoread
 " Pathogen
 execute pathogen#infect()
 
-" Unicode support
-set encoding=utf-8
+" CtrP
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+" More natural splits
+set splitbelow
+set splitright
+set fillchars=vert:│
+
+" Move to nex/previous line with same indentation
+nnoremap [b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
+nnoremap ]b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
 
 " Numbered tabs
 set tabline=%!MyTabLine()
@@ -169,5 +191,5 @@ hi TabLine ctermfg=0 ctermbg=7
 hi TabLineFill ctermfg=0 ctermbg=7
 
 " Ruler
-set cc=80
+set colorcolumn=80
 
