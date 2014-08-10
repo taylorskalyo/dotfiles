@@ -125,27 +125,26 @@ set t_Co=256
 set background=dark
 colorscheme tomorrow-night
 
-" Statusline
+" Statusline Mode
+hi User9 ctermfg=1
 let g:last_mode = ''
 function! Mode()
 	let l:mode = mode()
- 
+
 	if l:mode !=# g:last_mode
 		let g:last_mode = l:mode
- 
-		hi User1 ctermfg=22 cterm=BOLD
- 
+
 		if l:mode ==# 'n'
-			hi User1 ctermfg=1
+			hi User9 ctermfg=1
 		elseif l:mode ==# "i"
-			hi User1 ctermfg=2 
+			hi User9 ctermfg=2
 		elseif l:mode ==# "R"
-			hi User1 ctermfg=3 
+			hi User9 ctermfg=3
 		elseif l:mode ==? "v" || l:mode ==# "^V"
-			hi User1 ctermfg=4 
+			hi User9 ctermfg=4
 		endif
-	endif 
- 
+	endif
+
 	if l:mode ==# "n"
 		return "  NORMAL "
 	elseif l:mode ==# "i"
@@ -164,27 +163,30 @@ function! Mode()
 endfunction
 
 " Statusline colors
-hi User1 ctermfg=1
-hi User2 ctermfg=2
-hi User3 ctermfg=3
-hi User4 ctermfg=4
-hi User5 ctermfg=5
-hi User6 ctermfg=6
-hi User7 ctermfg=7
-hi User8 ctermfg=1
+hi User1 ctermfg=1 " Red
+hi User2 ctermfg=2 " Green
+hi User3 ctermfg=3 " Yellow
+hi User4 ctermfg=4 " Blue
+hi User5 ctermfg=5 " Magenta
+hi User6 ctermfg=6 " Cyan
+hi User7 ctermfg=7 " White
+hi User8 ctermfg=8 " Black
+" User9 changes based on the current mode
 
+" Statusline content
 set laststatus=2
-set statusline=%1*%{Mode()}%*
-set statusline+=%#StatusLine#
-set statusline+=%3*
-set statusline+=%=
-set statusline+=%3*
-set statusline+=%#StatusLine#
-set statusline+=%4*\ %{strlen(&fileformat)>0?&fileformat.'\ \ ':''}
-set statusline+=%5*%{strlen(&fileencoding)>0?&fileencoding.'\ \ ':''}
-set statusline+=%6*%{strlen(&filetype)>0?&filetype.'\ ':''}
-set statusline+=%8*\ %p%%\ 
-set statusline+=%2*%l:%c\ 
+set statusline=
+set statusline=%9*%{Mode()}%* " Mode
+set statusline+=%8*
+set statusline+=%=            " Separator
+set statusline+=%5*
+set statusline+=\ %.40f       " Filename
+set statusline+=%4*
+set statusline+=%{strlen(&filetype)>0?'\ '.&filetype:''} " Filetype
+set statusline+=%6*
+set statusline+=\ %P          " Percentage through file
+set statusline+=%2*
+set statusline+=\ %-6(%l:%c%) " Line:Col
 
 " Tabline
 hi TabLine ctermfg=0 ctermbg=7
