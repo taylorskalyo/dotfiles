@@ -37,6 +37,11 @@ set dir+=/tmp
 " Automatically read when file changes
 set autoread
 
+" Use the system clipboard if using tmux
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
+
 " Pathogen
 execute pathogen#infect()
 

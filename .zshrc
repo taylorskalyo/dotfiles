@@ -1,16 +1,23 @@
 # -----------------
 # Variables
 # ------------------------------------------------------------------------------
-export PATH="$PATH:$HOME/.rvm/bin"			# rvm bin
-export PATH="$PATH:/usr/local/mysql/bin"	# mysql bin
-export GOPATH="$HOME/code/go"				# go path
-export PATH="$PATH:$GOPATH/bin"				# go bin
-export PATH="$PATH:$HOME/bin"				# home bin
+export PATH="$PATH:$HOME/.rvm/bin"        # rvm bin
+export PATH="$PATH:/usr/local/mysql/bin"  # mysql bin
+#export GOROOT="$HOME/code/go"             # go root
+export GOPATH="$HOME/code/go"             # go path
+export GOBIN="$HOME/code/go/bin"          # go bin
+export PATH="$PATH:$GOBIN"                # go bin
+export PATH="$PATH:$HOME/bin"             # home bin
+export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin" # psql bin
+export CGROOT="$HOME/code/codeguard"
 
 # -----------------
 # Vim-Like Bindings
 # ------------------------------------------------------------------------------
 bindkey -v
+
+# Reduce mode switch lag
+export KEYTIMEOUT=3
 
 # -----------------
 # History
@@ -74,12 +81,14 @@ PROMPT="\
 # -----------------
 # External Resources
 # ------------------------------------------------------------------------------
-RESOURCES=(~/.aliases ~/.functions ~/.cgrc)
+RESOURCES=(~/.aliases ~/.functions ~/.cgrc ~/bin/z.sh)
 for FILE in $RESOURCES; do
 	if [ -f $FILE ]; then
 		source $FILE
 	fi
 done
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
 
 # -----------------
 # Dirstack
