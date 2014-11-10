@@ -40,7 +40,7 @@ bindsym $mod+d exec --no-startup-id dmenu_run -h 18 -nb '#2D2D2D' -sb '#A94747'
 bindsym $mod+j focus left
 bindsym $mod+k focus down
 bindsym $mod+l focus up
-bindsym $mod+semicolon focus right
+bindsym $mod+h focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -52,7 +52,7 @@ bindsym $mod+Right focus right
 bindsym $mod+Shift+j move left
 bindsym $mod+Shift+k move down
 bindsym $mod+Shift+l move up
-bindsym $mod+Shift+semicolon move right
+bindsym $mod+Shift+h move right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Shift+Left move left
@@ -61,10 +61,10 @@ bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
-bindsym $mod+h split h
+bindsym $mod+backslash split h
 
 # split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+minus split v
 
 # enter fullscreen mode for the focused container
 bindsym $mod+f fullscreen
@@ -104,22 +104,21 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 # WORKSPACES
 
 # workspace names
-workspace "Web" output VBOX0
-workspace "Code" output VBOX0
-workspace "Shell" output VBOX0
-workspace "Files" output VBOX0
+workspace "1 Shell" output VBOX0
+workspace "2 Web" output VBOX0
+workspace "3 Files" output VBOX0
 
 # workspace assignments
-assign [class="Chromium"] Web
+assign [class="Chromium"] 2 Web
 for_window [class="Chromium"] focus
 
-assign [class="Subl3"] Code
-for_window [class="Subl3"] focus
+assign [class="luakit"] 2 Web
+for_window [class="luakit"] focus
 
-assign [instance="i3-term"] Shell
+assign [instance="i3-term"] 1 Shell
 for_window [instance="i3-term"] focus
 
-assign [class="Thunar"] Files
+assign [class="Thunar"] 3 Files
 for_window [class="Thunar"] focus
 
 # switch to workspace
@@ -208,7 +207,7 @@ mode "resize" {
 	bindsym j resize shrink width 10 px or 10 ppt
 	bindsym k resize grow height 10 px or 10 ppt
 	bindsym l resize shrink height 10 px or 10 ppt
-	bindsym semicolon resize grow width 10 px or 10 ppt
+	bindsym h resize grow width 10 px or 10 ppt
 
 	# same bindings, but for the arrow keys
 	bindsym Left resize shrink width 10 px or 10 ppt
