@@ -11,6 +11,9 @@ export PATH="$PATH:$HOME/bin"             # home bin
 export PATH="$PATH:/Applications/Postgres.app/Contents/Versions/9.3/bin" # psql bin
 export CGROOT="$HOME/code/codeguard"
 
+export TERM="xterm-256color"
+export EDITOR="vim"
+
 # -----------------
 # Vim-Like Bindings
 # ------------------------------------------------------------------------------
