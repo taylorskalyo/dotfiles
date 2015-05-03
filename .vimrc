@@ -7,6 +7,13 @@ set encoding=utf-8
 " Enable mouse scrollwheel
 set mouse=a
 
+" Enable SGR mouse reporting
+if has("mouse_sgr")
+    set ttymouse=sgr
+else
+    set ttymouse=xterm2
+end
+
 " Wrap lines
 set wrap
 
@@ -56,6 +63,18 @@ set fillchars=vert:│
 " Move to nex/previous line with same indentation
 nnoremap [b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
 nnoremap ]b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
+
+" Tagbar
+nnoremap \t :TagbarToggle<CR>
+
+" CopyMatches
+function! CopyMatches(reg)
+  let hits = []
+  %s//\=len(add(hits, submatch(0))) ? submatch(0) : ''/ge
+  let reg = empty(a:reg) ? '+' : a:reg
+  execute 'let @'.reg.' = join(hits, "\n") . "\n"'
+endfunction
+command! -register CopyMatches call CopyMatches(<q-reg>)
 
 " Numbered tabs
 set tabline=%!MyTabLine()
