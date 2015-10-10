@@ -219,3 +219,9 @@ hi TabLineFill ctermfg=0 ctermbg=7
 " Ruler
 set colorcolumn=80
 
+" Speed up CtrlP with ag
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
+      \ -g ""'
+
+" Jump between if, else, do, case, when, end, etc. in ruby code
+runtime macros/matchit.vim

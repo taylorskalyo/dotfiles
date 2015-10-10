@@ -35,3 +35,11 @@ cman() {
 }
 alias man='cman'
 
+# Read Ag options from a config file if it exists in the current directory
+#agc() {
+#  if [ -e .agrc ]; then
+#    echo "`cat .agrc` \"$@\"" | xargs ag
+#  else
+#    ag "$@"
+#  fi
+#}
