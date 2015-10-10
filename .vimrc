@@ -1,5 +1,5 @@
 " Show line numbers
-set nu
+set number
 
 " Unicode support
 set encoding=utf-8
@@ -29,11 +29,26 @@ set shiftwidth=2
 set tabstop=2
 set expandtab
 
+" Highlight current line
+set cursorline
+
 " Show trailing spaces and tabs
 set list listchars=tab:│\ ,trail:·
 
 " Syntax highlighting
 syntax enable
+
+" Folding
+set foldenable
+set foldlevelstart=10
+set foldnestmax=10
+set foldmethod=indent
+
+" Check for file-specific vim settings
+set modelines=1
+
+" Search as characters are entered
+set incsearch
 
 " Move temporary files to tmp directory
 set bdir-=.
@@ -76,7 +91,7 @@ function! CopyMatches(reg)
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
 
-" Numbered tabs
+" Numbered tabs {{{
 set tabline=%!MyTabLine()
 function MyTabLine()
   let s = '' " complete tabline goes here
@@ -143,47 +158,49 @@ function MyTabLine()
   endif
   return s
 endfunction
+" }}}
 
 " Colors
 set t_Co=256
 set background=dark
 colorscheme tomorrow-night
 
+" Status Line {{{
 " Statusline Mode
 hi User9 ctermfg=1
 let g:last_mode = ''
 function! Mode()
-	let l:mode = mode()
+  let l:mode = mode()
 
-	if l:mode !=# g:last_mode
-		let g:last_mode = l:mode
+  if l:mode !=# g:last_mode
+    let g:last_mode = l:mode
 
-		if l:mode ==# 'n'
-			hi User9 ctermfg=1
-		elseif l:mode ==# "i"
-			hi User9 ctermfg=2
-		elseif l:mode ==# "R"
-			hi User9 ctermfg=3
-		elseif l:mode ==? "v" || l:mode ==# "^V"
-			hi User9 ctermfg=4
-		endif
-	endif
+    if l:mode ==# 'n'
+      hi User9 ctermfg=1
+    elseif l:mode ==# "i"
+      hi User9 ctermfg=2
+    elseif l:mode ==# "R"
+      hi User9 ctermfg=3
+    elseif l:mode ==? "v" || l:mode ==# "^V"
+      hi User9 ctermfg=4
+    endif
+  endif
 
-	if l:mode ==# "n"
-		return "  NORMAL "
-	elseif l:mode ==# "i"
-		return "  INSERT "
-	elseif l:mode ==# "R"
-		return "  REPLACE "
-	elseif l:mode ==# "v"
-		return "  VISUAL "
-	elseif l:mode ==# "V"
-		return "  V·LINE "
-	elseif l:mode ==# "^V"
-		return "  V·BLOCK "
-	else
-		return l:mode
-	endif
+  if l:mode ==# "n"
+    return "  NORMAL "
+  elseif l:mode ==# "i"
+    return "  INSERT "
+  elseif l:mode ==# "R"
+    return "  REPLACE "
+  elseif l:mode ==# "v"
+    return "  VISUAL "
+  elseif l:mode ==# "V"
+    return "  V·LINE "
+  elseif l:mode ==# "^V"
+    return "  V·BLOCK "
+  else
+    return l:mode
+  endif
 endfunction
 
 " Statusline colors
@@ -211,17 +228,16 @@ set statusline+=%6*
 set statusline+=\ %P          " Percentage through file
 set statusline+=%2*
 set statusline+=\ %-6(%l:%c%) " Line:Col
-
-" Tabline
-hi TabLine ctermfg=0 ctermbg=7
-hi TabLineFill ctermfg=0 ctermbg=7
+" }}}
 
 " Ruler
 set colorcolumn=80
 
 " Speed up CtrlP with ag
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden
-      \ -g ""'
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
 
 " Jump between if, else, do, case, when, end, etc. in ruby code
 runtime macros/matchit.vim
+
+" Specific vim settings for this file
+" vim:foldmethod=marker:foldlevel=0
