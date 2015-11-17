@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+if command -v security >/dev/null 2>&1; then
+  security find-generic-password -gw -s "$1" -a "$2"
+elif command -v secret-tool >/dev/null 2>&1; then
+  secret-tool lookup service "$1" account "$2"
+else
+  return 1
+fi

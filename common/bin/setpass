@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+if command -v security >/dev/null 2>&1; then
+  printf "Password: "
+  read -s PASS
+  security add-generic-password -l "$1" -a "$2" -s "$1" -w "$PASS"
+elif command -v secret-tool >/dev/null 2>&1; then
+  secret-tool store --label="$1" account "$2" service "$1"
+else
+  return 1
+fi

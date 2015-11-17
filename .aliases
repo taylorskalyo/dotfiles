@@ -1,9 +1,0 @@
-# Color output
-alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
-alias grep='grep --color=tty -d skip'
-
-# Confirm before overwriting something
-alias cp="cp -i"
-
-# Tell ssh what TERM we're using
-alias ssh="TERM=screen ssh"

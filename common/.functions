@@ -1,0 +1,48 @@
+# Colored man pages
+cman() {
+    env \
+    LESS_TERMCAP_mb=$'\E[01;31m' \
+    LESS_TERMCAP_md=$'\E[01;38;5;74m' \
+    LESS_TERMCAP_me=$'\E[0m' \
+    LESS_TERMCAP_se=$'\E[0m' \
+    LESS_TERMCAP_so=$'\E[38;5;246m' \
+    LESS_TERMCAP_ue=$'\E[0m' \
+    LESS_TERMCAP_us=$'\E[04;38;5;146m' \
+    man "$@"
+}
+alias man='cman'
+
+# Log in to the codeguard prod database via mysql
+cgmysql() {
+  config=~/code/codeguard/config/database.yml
+  read host user pass database <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['production'].values_at('host', 'username', 'password', 'database').join(' ')")
+
+  # Tunnel through util
+  #ssh -M -S mysql-sock -f -L 50000:$host:3306 util -N
+  #mysql -h127.0.0.1 -u$user -p$pass -P50000 $database "$@"
+  #ssh -S mysql-sock -O exit util
+
+  # Open direct connection
+  mysql -h$host -u$user -p$pass $database "$@"
+}
+
+# Log in to the codeguard prod database via innotop
+cginnotop() {
+  config=~/code/codeguard/config/database.yml
+  read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['production'].values_at('host', 'username', 'password').join(' ')")
+
+  # Tunnel through util
+  #ssh -M -S innotop-sock -f -L 50001:$host:3306 util -N
+  #innotop -h127.0.0.1 -u$user -p$pass -P50001 "$@"
+  #ssh -S innotop-sock -O exit util
+
+  # Open direct connection
+  innotop -h$host -u$user -p$pass "$@"
+}
+
+# Open a screen session with the specified name on the specified server
+# Prepend user to avoid naming conflicts with other users
+# Change escape key to 'j' to avoid conflicts with local multiplexor
+ses() {
+  ssh $1 -t "screen -e^Jj -DR $USER-$2"
+}

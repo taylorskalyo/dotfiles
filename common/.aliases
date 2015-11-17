@@ -1,0 +1,25 @@
+# Confirm before overwriting something
+alias cp="cp -i"
+
+# Tell ssh what TERM we're using
+alias ssh="TERM=screen ssh"
+
+# Color grep output
+alias grep='grep --color=tty -d skip'
+
+# Authorize the current IP address and revoke any past IP addresses
+alias ssh-here="aws-auth-ip.rb --authorize --revoke-all --remember --ignore-ip-ranges '98.251.91.62/32'"
+
+# -----------------
+# OS-specific
+# ------------------------------------------------------------------------------
+if [[ "$OSTYPE" == "linux-gnu" ]]; then
+  # Color ls output
+  alias ls='ls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+elif [[ "$OSTYPE" == "darwin"* ]]; then
+  # Color ls output
+  alias ls='gls --group-directories-first --time-style=+"%d.%m.%Y %H:%M" --color=auto -F'
+
+  # Use macvim
+  alias vim="/Applications/MacVim.app/Contents/MacOS/Vim"
+fi
