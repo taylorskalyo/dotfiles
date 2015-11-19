@@ -8,7 +8,7 @@ alias ssh="TERM=screen ssh"
 alias grep='grep --color=tty -d skip'
 
 # Authorize the current IP address and revoke any past IP addresses
-alias ssh-here="aws-auth-ip.rb --authorize --revoke-all --remember --ignore-ip-ranges '98.251.91.62/32'"
+alias ssh-here="aws-auth-ip.rb --authorize --revoke-all --remember"
 
 # -----------------
 # OS-specific
