@@ -1,9 +1,9 @@
 # -----------------
 # External Resources
 # ------------------------------------------------------------------------------
-RESOURCES=($HOME/.env $HOME/.aliases $HOME/.functions $HOME/.cgrc $HOME/bin/z.sh)
+RESOURCES=($HOME/.env $HOME/.aliases $HOME/.functions $HOME/.cgrc $HOME/bin/z.sh $HOME/.private)
 for FILE in $RESOURCES; do
-  [[ -f "$FILE" ]] && source $FILE
+  [[ -f "$FILE" ]] && source "$FILE"
 done
 
 # -----------------
