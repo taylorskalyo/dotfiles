@@ -50,7 +50,7 @@ cginnotop() {
 
 # Open a screen session with the specified name on the specified server
 # Prepend user to avoid naming conflicts with other users
-# Change escape key to 'j' to avoid conflicts with local multiplexor
+# Change escape key to 'j' to avoid conflicts with local terminal multiplexer
 ses() {
   ssh $1 -t "screen -e^Jj -DR $USER-$2"
 }
