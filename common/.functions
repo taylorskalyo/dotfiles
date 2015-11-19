@@ -14,8 +14,10 @@ alias man='cman'
 
 # Log in to the codeguard prod database via mysql
 cgmysql() {
+  env=$RAILS_ENV
+  [ ! -z $env ] || env="development"
   config=~/code/codeguard/config/database.yml
-  read host user pass database <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['production'].values_at('host', 'username', 'password', 'database').join(' ')")
+  read host user pass database <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password', 'database').join(' ')")
 
   # Tunnel through util
   #ssh -M -S mysql-sock -f -L 50000:$host:3306 util -N
@@ -28,8 +30,10 @@ cgmysql() {
 
 # Log in to the codeguard prod database via innotop
 cginnotop() {
+  env=$RAILS_ENV
+  [ ! -z $env ] || env="development"
   config=~/code/codeguard/config/database.yml
-  read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['production'].values_at('host', 'username', 'password').join(' ')")
+  read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password').join(' ')")
 
   # Tunnel through util
   #ssh -M -S innotop-sock -f -L 50001:$host:3306 util -N
