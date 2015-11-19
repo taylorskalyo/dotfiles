@@ -12,36 +12,40 @@ cman() {
 }
 alias man='cman'
 
-# Log in to the codeguard prod database via mysql
+# Log in to CG database via mysql
 cgmysql() {
   env=$RAILS_ENV
   [ ! -z $env ] || env="development"
-  config=~/code/codeguard/config/database.yml
+  config="$CGDIR/config/database.yml"
   read host user pass database <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password', 'database').join(' ')")
 
-  # Tunnel through util
-  #ssh -M -S mysql-sock -f -L 50000:$host:3306 util -N
-  #mysql -h127.0.0.1 -u$user -p$pass -P50000 $database "$@"
-  #ssh -S mysql-sock -O exit util
-
-  # Open direct connection
-  mysql -h$host -u$user -p$pass $database "$@"
+  if [ ! -z $REMOTE_HOST ]; then
+    # Tunnel through remote host
+    ssh -M -S mysql-sock -f -L 50000:$host:3306 util -N
+    mysql -h127.0.0.1 -u$user -p$pass -P50000 $database "$@"
+    ssh -S mysql-sock -O exit "$REMOTE_HOST"
+  else
+    # Open direct connection
+    mysql -h$host -u$user -p$pass $database "$@"
+  fi
 }
 
-# Log in to the codeguard prod database via innotop
+# Log in to CG database via innotop
 cginnotop() {
   env=$RAILS_ENV
   [ ! -z $env ] || env="development"
-  config=~/code/codeguard/config/database.yml
+  config="$CGDIR/config/database.yml"
   read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password').join(' ')")
 
-  # Tunnel through util
-  #ssh -M -S innotop-sock -f -L 50001:$host:3306 util -N
-  #innotop -h127.0.0.1 -u$user -p$pass -P50001 "$@"
-  #ssh -S innotop-sock -O exit util
-
-  # Open direct connection
-  innotop -h$host -u$user -p$pass "$@"
+  if [ ! -z $REMOTE_HOST ]; then
+    # Tunnel through remote host
+    ssh -M -S innotop-sock -f -L 50001:$host:3306 util -N
+    innotop -h127.0.0.1 -u$user -p$pass -P50001 "$@"
+    ssh -S innotop-sock -O exit "$REMOTE_HOST"
+  else
+    # Open direct connection
+    innotop -h$host -u$user -p$pass "$@"
+  fi
 }
 
 # Open a screen session with the specified name on the specified server
