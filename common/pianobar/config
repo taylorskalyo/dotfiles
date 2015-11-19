@@ -1,5 +1,8 @@
 audio_quality = high
-user = <user>
+# Replace <user> with your username
+#user = <user>
 
 # Get password from an external tool if possible; fall back to reading from stdin
-password_command = if command -v getpass >/dev/null 2>&1; then getpass pianobar <user>; else echo "Failed. Enter password:" >&2 && read pass && echo $pass; fi
+# "getpass" is a shell script provided in .dotfiles/common/bin
+# Replace <user> with your username
+#password_command = if command -v getpass >/dev/null 2>&1; then getpass pianobar <user>; else echo "Failed. Enter password:" >&2 && read pass && echo $pass; fi
