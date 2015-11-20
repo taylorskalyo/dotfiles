@@ -21,9 +21,11 @@ cgmysql() {
 
   if [ ! -z $REMOTE_HOST ]; then
     # Tunnel through remote host
-    ssh -M -S mysql-sock -f -L 50000:$host:3306 util -N
-    mysql -h127.0.0.1 -u$user -p$pass -P50000 $database "$@"
-    ssh -S mysql-sock -O exit "$REMOTE_HOST"
+    sock="cgmysql-sock-$(date +%s)" # Append the time to reduce collisions
+    port=$(getport)
+    ssh -M -S "$sock" -f -L $port:$host:3306 util -N
+    mysql -h127.0.0.1 -u$user -p$pass -P$port $database "$@"
+    ssh -S "$sock" -O exit "$REMOTE_HOST"
   else
     # Open direct connection
     mysql -h$host -u$user -p$pass $database "$@"
@@ -39,9 +41,11 @@ cginnotop() {
 
   if [ ! -z $REMOTE_HOST ]; then
     # Tunnel through remote host
-    ssh -M -S innotop-sock -f -L 50001:$host:3306 util -N
-    innotop -h127.0.0.1 -u$user -p$pass -P50001 "$@"
-    ssh -S innotop-sock -O exit "$REMOTE_HOST"
+    sock="cginnotop-sock-$(date +%s)" # Append the time to reduce collisions
+    port=$(getport)
+    ssh -M -S "$sock" -f -L $port:$host:3306 util -N
+    innotop -h127.0.0.1 -u$user -p$pass -P$port "$@"
+    ssh -S "$sock" -O exit "$REMOTE_HOST"
   else
     # Open direct connection
     innotop -h$host -u$user -p$pass "$@"
@@ -53,4 +57,13 @@ cginnotop() {
 # Change escape key to 'j' to avoid conflicts with local terminal multiplexer
 ses() {
   ssh $1 -t "screen -e^Jj -DR $USER-$2"
+}
+
+# Find the next open port
+getport() {
+  for port in $(seq 32768 65000); do
+    lsof -i -n -P |grep LISTEN |grep -q ":${port}"
+    [ $? -eq 1 ] && break
+  done
+  echo $port
 }
