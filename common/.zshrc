@@ -2,7 +2,7 @@
 # External Resources
 # ------------------------------------------------------------------------------
 RESOURCES=($HOME/.env $HOME/.aliases $HOME/.functions $HOME/bin/z.sh $HOME/.private)
-for FILE in $RESOURCES; do
+for FILE in "${RESOURCES[@]}"; do
   [[ -f "$FILE" ]] && source "$FILE"
 done
 

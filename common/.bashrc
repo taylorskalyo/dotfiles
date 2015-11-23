@@ -2,7 +2,7 @@
 # External Resources
 # ------------------------------------------------------------------------------
 RESOURCES=($HOME/.env $HOME/.aliases $HOME/.functions $HOME/bin/z.sh $HOME/.private)
-for FILE in $RESOURCES; do
+for FILE in "${RESOURCES[@]}"; do
   [[ -f "$FILE" ]] && source "$FILE"
 done
 
@@ -36,7 +36,8 @@ shopt -s nocaseglob # case insensitive globbing
 # -----------------
 # Prompt
 # ------------------------------------------------------------------------------
-PS1="\[\e[1;92m\]\u \
+PS1="\
+\[\e[1;92m\]\u \
 \[\e[1;94m\]\w \
 \[\e[1;92m\]\$ \
 \[\e[m\]"
