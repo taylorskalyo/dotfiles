@@ -2,22 +2,31 @@
 " Plugins and other tools
 " ------------------------------------------------------------- {{{
 " Pathogen
-execute pathogen#infect()
+"execute pathogen#infect()
+
+" Vundle
+set nocompatible
+filetype off
+set runtimepath+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'kien/ctrlp.vim'
+Plugin 'rking/ag.vim'
+Plugin 'tpope/vim-fugitive'
+Plugin 'scrooloose/nerdtree'
+Plugin 'scrooloose/syntastic'
+Plugin 'majutsushi/tagbar'
+call vundle#end()
+filetype plugin indent on
 
 " Speed up CtrlP with ag
-if exists('g:ctrlp_user_command')
-  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
-endif
+let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
 
 " Toggle Tagbar
-if exists(':TagbarToggle')
-  nnoremap <leader>t :TagbarToggle<CR>
-endif
+nnoremap <leader>t :TagbarToggle<CR>
 
 " Toggle NerdTree
-if exists(':NERDTreeToggle')
-  nnoremap <leader>n :NERDTreeToggle<CR>
-endif
+nnoremap <leader>n :NERDTreeToggle<CR>
 
 " Use the system clipboard if using tmux
 if $TMUX == ''
@@ -44,7 +53,6 @@ colorscheme tomorrow-night
 
 " Indent settings
 set autoindent
-filetype plugin indent on
 
 " Tab is equal to 2 spaces
 set shiftwidth=2
