@@ -1,24 +1,46 @@
+" -----------------
+" Plugins and other tools
+" ------------------------------------------------------------- {{{
+" Pathogen
+execute pathogen#infect()
+
+" Speed up CtrlP with ag
+if exists('g:ctrlp_user_command')
+  let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
+endif
+
+" Toggle Tagbar
+if exists(':TagbarToggle')
+  nnoremap <leader>t :TagbarToggle<CR>
+endif
+
+" Toggle NerdTree
+if exists(':NERDTreeToggle')
+  nnoremap <leader>n :NERDTreeToggle<CR>
+endif
+
+" Use the system clipboard if using tmux
+if $TMUX == ''
+  set clipboard+=unnamed
+endif
+" }}}
+
+" -----------------
+" Interface
+" ------------------------------------------------------------- {{{
 " Show line numbers
 set number
-
-" Unicode support
-set encoding=utf-8
-
-" Enable mouse scrollwheel
-set mouse=a
-
-" Enable SGR mouse reporting
-if has("mouse_sgr")
-    set ttymouse=sgr
-else
-    set ttymouse=xterm2
-end
 
 " Wrap lines
 set wrap
 
-" Highlight searches
-set hlsearch
+" Syntax highlighting
+syntax enable
+
+" Colors
+set t_Co=256
+set background=dark
+colorscheme tomorrow-night
 
 " Indent settings
 set autoindent
@@ -35,14 +57,43 @@ set expandtab
 " Show trailing spaces and tabs
 set list listchars=tab:│\ ,trail:·
 
-" Syntax highlighting
-syntax enable
-
 " Folding
 set foldenable
 set foldlevelstart=10
 set foldnestmax=10
 set foldmethod=indent
+
+" Tabline
+hi TabLine ctermfg=0 ctermbg=7
+hi TabLineFill ctermfg=0 ctermbg=7
+
+" Ruler
+set colorcolumn=80
+
+" More natural splits
+set splitbelow
+set splitright
+set fillchars=vert:│
+"  }}}
+
+" -----------------
+" Miscelaneous
+" ------------------------------------------------------------- {{{
+" Unicode support
+set encoding=utf-8
+
+" Enable mouse scrollwheel
+set mouse=a
+
+" Enable SGR mouse reporting
+if has("mouse_sgr")
+  set ttymouse=sgr
+else
+  set ttymouse=xterm2
+end
+
+" Highlight searches
+set hlsearch
 
 " Check for file-specific vim settings
 set modelines=1
@@ -61,32 +112,20 @@ set dir+=/tmp
 
 " Automatically read when file changes
 set autoread
+" }}}
 
-" Use the system clipboard if using tmux
-if $TMUX == ''
-  set clipboard+=unnamed
-endif
-
-" Pathogen
-execute pathogen#infect()
-
-" CtrP
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-
-" More natural splits
-set splitbelow
-set splitright
-set fillchars=vert:│
-
+" -----------------
+" Functions and shortcuts
+" ------------------------------------------------------------- {{{
 " Move to nex/previous line with same indentation
 nnoremap [b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
 nnoremap ]b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
 
-" Tagbar
-nnoremap \t :TagbarToggle<CR>
+" Spell check
+nnoremap <leader>sc :setlocal spell!<CR>
 
-" NerdTree
-nnoremap \n :NERDTreeToggle<CR>
+" Jump between if, else, do, case, when, end, etc. in ruby code
+runtime macros/matchit.vim
 
 " CopyMatches
 function! CopyMatches(reg)
@@ -96,8 +135,12 @@ function! CopyMatches(reg)
   execute 'let @'.reg.' = join(hits, "\n") . "\n"'
 endfunction
 command! -register CopyMatches call CopyMatches(<q-reg>)
+nnoremap <leader>cm :CopyMatches<space>
+" }}}
 
-" Numbered tabs {{{
+" -----------------
+" Numbered tabs
+" ------------------------------------------------------------- {{{
 set tabline=%!MyTabLine()
 function MyTabLine()
   let s = '' " complete tabline goes here
@@ -166,14 +209,22 @@ function MyTabLine()
 endfunction
 " }}}
 
-" Colors
-set t_Co=256
-set background=dark
-colorscheme tomorrow-night
+" -----------------
+" Statusline
+" ------------------------------------------------------------- {{{
+" Statusline colors
+hi User1 ctermfg=9  " Red
+hi User2 ctermfg=10 " Green
+hi User3 ctermfg=11 " Yellow
+hi User4 ctermfg=12 " Blue
+hi User5 ctermfg=13 " Magenta
+hi User6 ctermfg=14 " Cyan
+hi User7 ctermfg=7  " White
+hi User8 ctermfg=8  " Black
+" User9 changes based on the current mode
 
-" Status Line {{{
 " Statusline Mode
-hi User9 ctermfg=1
+hi User9 ctermfg=9
 let g:last_mode = ''
 function! Mode()
   let l:mode = mode()
@@ -209,17 +260,6 @@ function! Mode()
   endif
 endfunction
 
-" Statusline colors
-hi User1 ctermfg=9 " Red
-hi User2 ctermfg=10 " Green
-hi User3 ctermfg=11 " Yellow
-hi User4 ctermfg=12 " Blue
-hi User5 ctermfg=13 " Magenta
-hi User6 ctermfg=14 " Cyan
-hi User7 ctermfg=7 " White
-hi User8 ctermfg=8 " Black
-" User9 changes based on the current mode
-
 " Statusline content
 set laststatus=2
 set statusline=
@@ -236,18 +276,6 @@ set statusline+=%2*
 set statusline+=\ %-6(%l:%c%) " Line:Col
 " }}}
 
-" Tabline
-hi TabLine ctermfg=0 ctermbg=7
-hi TabLineFill ctermfg=0 ctermbg=7
-
-" Ruler
-set colorcolumn=80
-
-" Speed up CtrlP with ag
-let g:ctrlp_user_command = 'ag %s -i --nocolor --nogroup --hidden -g ""'
-
-" Jump between if, else, do, case, when, end, etc. in ruby code
-runtime macros/matchit.vim
 
 " Specific vim settings for this file
 " vim:foldmethod=marker:foldlevel=0
