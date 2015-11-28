@@ -6,6 +6,7 @@
 
 " Vundle
 set nocompatible
+filetype on "prevent vim bug where starting with filetype off causes silent error
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
