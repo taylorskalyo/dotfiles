@@ -12,6 +12,22 @@ cman() {
 }
 alias man='cman'
 
+# Open a screen session with the specified name on the specified server
+# Prepend user to avoid naming conflicts with other users
+# Change escape key to 'j' to avoid conflicts with local terminal multiplexer
+ses() {
+  ssh $1 -t "screen -e^Jj -DR $USER-$2"
+}
+
+# Find the next open port
+getport() {
+  for port in $(seq 32768 65000); do
+    lsof -i -n -P |grep LISTEN |grep -q ":${port}"
+    [ $? -eq 1 ] && break
+  done
+  echo $port
+}
+
 # Log in to CG database via mysql
 cgmysql() {
   env=$RAILS_ENV
@@ -30,11 +46,6 @@ cgmysql() {
     # Open direct connection
     mysql -h$host -u$user -p$pass $database "$@"
   fi
-}
-
-# SSH into the cg vagrant box and execute a command
-cgvagrant() {
-  cd $CGDIR && vagrant up && vagrant ssh -c "cd codeguard; $@"
 }
 
 # Log in to CG database via innotop
@@ -57,18 +68,7 @@ cginnotop() {
   fi
 }
 
-# Open a screen session with the specified name on the specified server
-# Prepend user to avoid naming conflicts with other users
-# Change escape key to 'j' to avoid conflicts with local terminal multiplexer
-ses() {
-  ssh $1 -t "screen -e^Jj -DR $USER-$2"
-}
-
-# Find the next open port
-getport() {
-  for port in $(seq 32768 65000); do
-    lsof -i -n -P |grep LISTEN |grep -q ":${port}"
-    [ $? -eq 1 ] && break
-  done
-  echo $port
+# SSH into the cg vagrant box and execute a command
+cgvagrant() {
+  cd $CGDIR && vagrant up && vagrant ssh -c "cd codeguard; $@"
 }
