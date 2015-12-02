@@ -16,7 +16,7 @@ alias man='cman'
 # Prepend user to avoid naming conflicts with other users
 # Change escape key to 'j' to avoid conflicts with local terminal multiplexer
 ses() {
-  ssh $1 -t "screen -e^Jj -DR $USER-$2"
+  ssh "$1" -t "screen -e^Jj -DR ${USER}-$2"
 }
 
 # Find the next open port
@@ -25,50 +25,30 @@ getport() {
     lsof -i -n -P |grep LISTEN |grep -q ":${port}"
     [ $? -eq 1 ] && break
   done
-  echo $port
+  echo "${port}"
 }
 
-# Log in to CG database via mysql
-cgmysql() {
-  env=$RAILS_ENV
-  [ ! -z $env ] || env="development"
-  config="$CGDIR/config/database.yml"
-  read host user pass database <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password', 'database').join(' ')")
+# Log in to CG database
+cgdb() {
+  client="${CLIENT:-mysql}"
+  env="${RAILS_ENV:-development}"
+  config="${CGDIR}/config/database.yml"
+  read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('${config}')['${env}'].values_at('host', 'username', 'password').join(' ')")
 
-  if [ ! -z $REMOTE_HOST ]; then
+  if [ ! -z $TUNNEL ]; then
     # Tunnel through remote host
-    sock="cgmysql-sock-$(date +%s)" # Append the time to reduce collisions
+    sock="${client}-sock-$(date +%s)" # Append the time to reduce collisions
     port=$(getport)
-    ssh -M -S "$sock" -f -L $port:$host:3306 util -N
-    mysql -h127.0.0.1 -u$user -p$pass -P$port $database "$@"
-    ssh -S "$sock" -O exit "$REMOTE_HOST"
+    ssh -M -S "${sock}" -f -L "${port}":"${host}":3306 "${TUNNEL}" -N
+    "${client}" -h127.0.0.1 -u"${user}" -p"${pass}" -P"${port}" "$@"
+    ssh -S "${sock}" -O exit "${TUNNEL}"
   else
     # Open direct connection
-    mysql -h$host -u$user -p$pass $database "$@"
-  fi
-}
-
-# Log in to CG database via innotop
-cginnotop() {
-  env=$RAILS_ENV
-  [ ! -z $env ] || env="development"
-  config="$CGDIR/config/database.yml"
-  read host user pass <<<$(ruby -ryaml -e "puts YAML::load_file('$config')['$env'].values_at('host', 'username', 'password').join(' ')")
-
-  if [ ! -z $REMOTE_HOST ]; then
-    # Tunnel through remote host
-    sock="cginnotop-sock-$(date +%s)" # Append the time to reduce collisions
-    port=$(getport)
-    ssh -M -S "$sock" -f -L $port:$host:3306 util -N
-    innotop -h127.0.0.1 -u$user -p$pass -P$port "$@"
-    ssh -S "$sock" -O exit "$REMOTE_HOST"
-  else
-    # Open direct connection
-    innotop -h$host -u$user -p$pass "$@"
+    "${client}" -h"${host}" -u"${user}" -p"${pass}" "$@"
   fi
 }
 
 # SSH into the cg vagrant box and execute a command
 cgvagrant() {
-  cd $CGDIR && vagrant up && vagrant ssh -c "cd codeguard; $@"
+  cd "${CGDIR}" && vagrant ssh -c "cd codeguard; $@"
 }

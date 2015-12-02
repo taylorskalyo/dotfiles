@@ -3,7 +3,7 @@
 # ------------------------------------------------------------------------------
 RESOURCES=($HOME/.env $HOME/.aliases $HOME/.functions $HOME/bin/z.sh $HOME/.private)
 for FILE in "${RESOURCES[@]}"; do
-  [[ -f "$FILE" ]] && source "$FILE"
+  [[ -f "${FILE}" ]] && source "${FILE}"
 done
 
 # -----------------
@@ -13,6 +13,8 @@ HISTFILE=~/.histfile
 HISTSIZE=1000
 SAVEHIST=1000
 setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_DUPS
+setopt APPEND_HISTORY # append to history instead of overwriting
 
 # Search history
 bindkey "^R" history-incremental-search-backward
@@ -23,8 +25,12 @@ bindkey "^R" history-incremental-search-backward
 autoload -Uz compinit
 compinit
 
-# Teamocil completion
-[[ -d $HOME/.teamocil ]] && compctl -g "$HOME/.teamocil/*(:t:r)" teamocil
+# -----------------
+# Options
+# ------------------------------------------------------------------------------
+setopt CORRECT # fix minor spelling errors
+setopt DOT_GLOB # include filenames starting with '.' in globs
+setopt ALIASES # expand aliases
 
 # -----------------
 # Colors
@@ -46,7 +52,7 @@ zle -N zle-keymap-select
 
 # Print the time when a command is executed
 preexec () {
-  DATE=`date +"%H:%M:%S"`
+  DATE=$(date +"%H:%M:%S")
   C=$(($COLUMNS-9))
   echo "\033[1A\033[${C}C $fg_bold[red]${DATE}$reset_color"
 }
