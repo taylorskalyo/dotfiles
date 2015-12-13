@@ -9,6 +9,7 @@ set nocompatible
 filetype on "prevent vim bug where starting with filetype off causes silent error
 filetype off
 set runtimepath+=~/.vim/bundle/Vundle.vim
+set runtimepath+=~/.config/nvim/bundle/Vundle.vim
 call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'kien/ctrlp.vim'
