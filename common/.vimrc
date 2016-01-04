@@ -131,6 +131,12 @@ set autoread
 nnoremap [b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%<' . line('.') . 'l\S', 'be')<CR>
 nnoremap ]b :call search('^'. matchstr(getline('.'), '\(^\s*\)') .'\%>' . line('.') . 'l\S', 'e')<CR>
 
+" Move cursor by display line (rather than physical line)
+nnoremap k gk
+nnoremap j gj
+nnoremap <Up> g<Up>
+nnoremap <Down> g<Down>
+
 " Spell check
 nnoremap <leader>sc :setlocal spell!<CR>
 
